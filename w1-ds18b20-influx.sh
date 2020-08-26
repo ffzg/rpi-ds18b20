@@ -10,8 +10,10 @@ ls /sys/bus/w1/devices/w1_bus_master*/*-*/w1_slave | while read path ; do
 	if [ $temp -ne 85000 ] ; then # 85 is error
 		temp=$( echo $temp | awk '{ printf "%.3f\n", $1 / 1000 }' )
 		id=$( echo $path | cut -d/ -f 7 )
-		echo "ac_temp,dc=a125,sensor=$id temperature=$temp" >> $influx
+		name=$( grep "^$id" id2name.txt | cut -d' ' -f2 )
+		echo "ac_temp,dc=a125,sensor=$id,name=$name temperature=$temp" >> $influx
 		echo $temp > /dev/shm/ds18b20.$id
+		echo $temp > /dev/shm/ds18b20.name.$name
 	fi
 done
 
