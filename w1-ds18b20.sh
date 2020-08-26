@@ -6,7 +6,6 @@ ls /sys/bus/w1/devices/w1_bus_master*/*-*/w1_slave | while read path ; do
 		temp=$( echo $temp | awk '{ printf "%.3f\n", $1 / 1000 }' )
 		id=$( echo $path | cut -d/ -f 7 )
 		name=$( grep "^$id" id2name.txt | cut -d' ' -f2 )
-		echo -n "$id $name "
-		echo $temp | tee /dev/shm/ds18b20.$id
+		echo "$id $name $temp"
 	fi
 done
