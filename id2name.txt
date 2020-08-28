@@ -4,3 +4,4 @@
 28-021503cb92ff A125-rpi-temp
 28-0000043c4582 B101-prozor
 28-031466af84ff B101-ulaz
+28-03150505eeff pihdmi
