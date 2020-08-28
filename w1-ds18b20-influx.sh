@@ -19,4 +19,5 @@ ls /sys/bus/w1/devices/w1_bus_master*/*-*/w1_slave | while read path ; do
 done
 
 #curl --silent -XPOST "$influx_url" --data-binary "@$influx"
-curl -XPOST $influx_url --data-binary "@$influx"
+curl --silent -XPOST $influx_url --data-binary "@$influx"
+
