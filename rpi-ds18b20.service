@@ -5,7 +5,7 @@ Wants=networking.target
 
 [Service]
 User=root
-Environment="DC=b101"
+Environment="DC=trnjanska"
 ExecStartPre=/bin/sh -c 'until ping -c1 10.60.0.92; do sleep 1; done;'
 ExecStart=/home/pi/rpi-ds18b20/w1-loop.sh
 Restart=always
